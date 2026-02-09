@@ -1,0 +1,12 @@
+CUDA_VISIBLE_DEVICES=5 python evaluate_local.py \
+  --input_path /data/tyt/workspace/tyt/CoT/CoT-Language-master/Qwen3-1.7B/eval/dataset/gsm8k/test.jsonl \
+  --output_dir ./outputs/llama3.2/llmlingua2/gsm8k/ \
+  --dataset_format ansaug \
+  --model_type llama3 \
+  --compression_ratio 0.2 \
+  --ratio_injection tokenskip \
+  --max_new_tokens 600 \
+  --batch_size 32 --temperature 0.0 \
+  --model_path /data/tyt/workspace/tyt/Models/llama_3.2_3b_instruct/llama3.2 \
+  --tokenizer_path /data/tyt/workspace/tyt/Models/llama_3.2_3b_instruct/llama3.2 \
+  --adapter_path /data/tyt/workspace/tyt/Code/efficient_reasoning/LLaMA-Factory-main/saves/llama3.2_3b_llmlingua \

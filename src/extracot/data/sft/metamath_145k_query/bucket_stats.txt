@@ -1,0 +1,8 @@
+TOTAL candidates: 90942   SELECTED: 15000 / target 15000
+Constraint: question + <think> <= 4070 tokens
+Bins (CoT tokens only):
+  [0] [0, 512)  candidates=34447  selected=3389
+  [1] [512, 1024)  candidates=35913  selected=3390
+  [2] [1024, 2048)  candidates=14785  selected=3389
+  [3] [2048, 3072)  candidates=4354  selected=3389
+  [4] [3072, 4070)  candidates=1443  selected=1443

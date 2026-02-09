@@ -1,0 +1,11 @@
+CUDA_VISIBLE_DEVICES=0 python -m vllm.entrypoints.openai.api_server \
+  --host 0.0.0.0 \
+  --port 8001 \
+  --model /data/tyt/workspace/tyt/Models/Qwen3-8B \
+  --served-model-name longformer_numeric \
+  --enable-lora \
+  --lora-modules longformer=/data/tyt/workspace/tyt/Code/efficient_reasoning/LLaMA-Factory-main/saves/longformer_numeric \
+  --max-loras 1 \
+  --max-lora-rank 64 \
+  --gpu-memory-utilization 0.90 \
+  --dtype auto

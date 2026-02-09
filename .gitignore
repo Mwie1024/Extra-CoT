@@ -1,0 +1,24 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.lock
+
+# outputs / logs
+outputs/
+tb_logs/
+wandb/
+runs/
+
+# artifacts (even though we don't copy them)
+*.parquet
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.zip
+*.tar
+*.tar.gz
+*.gz
+
+checkpoints/
+ckpt_*/

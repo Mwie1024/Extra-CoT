@@ -1,0 +1,14 @@
+python build_mixture_llamafactory.py \
+  --original_path /data/tyt/workspace/tyt/CoT/CoT-Language-master/validata_longformer/outputs/qwen2.5_7b_infer_correct_22k.jsonl \
+  --longformer_dir /data/tyt/workspace/tyt/CoT/CoT-Language-master/validata_longformer/longformer_pipeline/qwen2.5-7b-metamath-50k-correct \
+  --ratios 1.0,0.8,0.6,0.4,0.2 \
+  --special_buckets 1.0,0.8,0.6,0.4,0.2 \
+  --special_token_prefix COMP_ \
+  --auto_token "<COMP_AUTO>" \
+  --a_multi_count 10000 \
+  --a_single_count 5000 \
+  --b_count 7000 \
+  --b_pattern_fracs "one:0.7,two:0.2,comp100:0.1" \
+  --b_ratio_probs "0.8:0.35,0.6:0.30,0.4:0.20,0.2:0.15" \
+  --output_path ./output/llamafactory_mixed_64k.json \
+  --special_tokens_out ./output/special_tokens.json
