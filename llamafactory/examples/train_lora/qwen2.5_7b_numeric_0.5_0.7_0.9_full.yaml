@@ -1,0 +1,45 @@
+### model
+model_name_or_path: /data/tyt/workspace/tyt/Models/Qwen2.5-7B-Instruct
+trust_remote_code: true
+use_fast_tokenizer: true
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all           # 保持你原来的设置
+
+lora_rank: 8
+lora_alpha: 16
+
+### dataset
+dataset: qwen2.5_7b_metamath_0.5_0.7_0.9
+template: qwen
+cutoff_len: 2048
+max_samples: 20000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### output
+output_dir: ./saves/qwen2.5_7b_metamath_0.5_0.7_0.9_full
+logging_steps: 10
+save_steps: 1000
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 8
+optim: adamw_torch
+learning_rate: 5.0e-5
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+
+### eval
+val_size: 0.1
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 100

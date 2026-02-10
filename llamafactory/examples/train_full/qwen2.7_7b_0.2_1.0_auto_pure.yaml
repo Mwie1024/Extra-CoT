@@ -1,0 +1,55 @@
+### model
+model_name_or_path: /data/tyt/workspace/tyt/Models/qwen3-1.7B/qwen3_1.7b
+trust_remote_code: true
+use_fast_tokenizer: true
+add_special_tokens: "<COMP_20>,<COMP_40>,<COMP_60>,<COMP_80>,<COMP_100>,<COMP_AUTO>"  # ★ 加上 AUTO
+resize_vocab: true
+split_special_tokens: false
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+
+### dataset
+dataset: sft_auto_follow_10k
+template: qwen
+cutoff_len: 3072
+max_samples: 65000                  # ★ 你的新规模（约 64k，可按实际写 60000）
+overwrite_cache: true
+preprocessing_num_workers: 16
+packing: true
+group_by_length: true               # ★ 建议加，减少 padding 浪费
+
+### output
+output_dir: ./saves/sft_auto_follow_10k
+logging_steps: 10
+save_strategy: steps
+save_steps: 1000                    # ★ 更频繁
+save_total_limit: 5
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+optim: adamw_torch_fused
+learning_rate: 1.2e-5               # ★ 60k 比 160k 步数少，可略微上调或加训练轮数
+num_train_epochs: 5.0               # ★ 从 2 → 3，补齐总训练 token
+lr_scheduler_type: cosine
+warmup_ratio: 0.05                  # ★ 从 0.03 → 0.05，更稳
+weight_decay: 0.05                  # ★ 适度正则，full FT 稳一些
+bf16: true
+gradient_checkpointing: true
+flash_attn: auto
+ddp_timeout: 180000000
+ddp_find_unused_parameters: false
+
+### eval
+val_size: 0.1
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 500                     # ★ 更频评估，观察 `<COMP_xx>` 跟随准确率
+
+### deepspeed
+deepspeed: /data/tyt/workspace/tyt/CoT/LLaMA-Factory-main/examples/deepspeed/ds_z3_config.json

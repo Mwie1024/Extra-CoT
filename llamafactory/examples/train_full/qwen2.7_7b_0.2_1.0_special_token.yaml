@@ -1,0 +1,56 @@
+### model
+model_name_or_path: /data/tyt/workspace/tyt/Models/Qwen2.5-7B-Instruct
+trust_remote_code: true
+use_fast_tokenizer: true
+
+# 保持你的 5 个控制码
+add_special_tokens: "<COMP_20>,<COMP_40>,<COMP_60>,<COMP_80>,<COMP_100>"
+resize_vocab: true
+split_special_tokens: false
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full          # ★ 改为全量微调
+# （删掉 lora_* / additional_target / lora_target 等）
+
+### dataset
+dataset: 0.2-1.0_seperate_0.2
+template: qwen
+cutoff_len: 3072               # 方案B可改为 2048
+max_samples: 160000            # 用满你的数据
+overwrite_cache: true
+preprocessing_num_workers: 16
+packing: true                  # ★ 强烈建议开启样本打包（若你的框架字段不同，请替换）
+
+### output
+output_dir: ./saves/qwen2.5_7b_0.2_1.0_special_token
+logging_steps: 10
+save_strategy: steps
+save_steps: 1500
+save_total_limit: 3
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 1 # 如显存紧，先 1
+gradient_accumulation_steps: 8
+optim: adamw_torch_fused       # 更快更省显存；不支持就用 adamw_torch
+learning_rate: 1.0e-5          # 方案B可用 1.5e-5
+num_train_epochs: 2.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.03
+bf16: true
+gradient_checkpointing: true   # ★ 开启
+flash_attn: auto               # ★ 若框架支持（或等效开关）
+ddp_timeout: 180000000
+ddp_find_unused_parameters: false
+
+### eval
+val_size: 0.1
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 100
+
+### deepspeed
+deepspeed: /data/tyt/workspace/tyt/CoT/LLaMA-Factory-main/examples/deepspeed/ds_z3_config.json

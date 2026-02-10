@@ -1,0 +1,56 @@
+### model
+model_name_or_path: /data/tyt/workspace/tyt/CoT/LLaMA-Factory-main/saves/qwen2.5_7b_0.2_1.0_special_token
+trust_remote_code: true
+use_fast_tokenizer: true
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all           # 保持原有设置
+
+# LoRA配置
+lora_rank: 8
+lora_alpha: 16
+# lora_dropout: 0.1          # 添加dropout防止过拟合
+
+# 关键修改：添加额外的训练模块
+additional_target: lm_head  # 这是关键！让lm_head参与训练
+
+### dataset
+dataset: qwen2.5_7b_specialtoken_20406080
+template: qwen
+cutoff_len: 2048
+max_samples: 99999
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### output
+output_dir: ./saves/lora/qwen2.5_7b_specialtoken_20406080_lm_head # 修改输出目录名以区分
+logging_steps: 10
+save_steps: 500    # 调小以便更频繁地保存checkpoint
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 8
+optim: adamw_torch
+
+# 学习率策略调整
+learning_rate: 2.0e-5      # 降低主学习率，对lm_head更温和
+num_train_epochs: 5.0      # 减少epoch数，因为只需要学习token输出
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+
+# 添加梯度裁剪，防止lm_head训练不稳定
+gradient_checkpointing: true
+max_grad_norm: 1.0
+
+### eval
+val_size: 0.1
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 100
