@@ -1,0 +1,852 @@
+文件夹 PATH 列表
+卷序列号为 C4FB-035E
+C:.
+|   .gitignore
+|   README.md
+|   tree.txt
+|   
++---configs
+|   \---qwen1.7b
++---data
+|   \---samples
++---docs
++---llamafactory
+|   |   .dockerignore
+|   |   .env.local
+|   |   .gitattributes
+|   |   .gitignore
+|   |   .pre-commit-config.yaml
+|   |   =0.10.0
+|   |   CITATION.cff
+|   |   LICENSE
+|   |   Makefile
+|   |   MANIFEST.in
+|   |   pyproject.toml
+|   |   README.md
+|   |   README_zh.md
+|   |   requirements.txt
+|   |   setup.py
+|   |   
+|   +---.github
+|   |   |   CODE_OF_CONDUCT.md
+|   |   |   CONTRIBUTING.md
+|   |   |   PULL_REQUEST_TEMPLATE.md
+|   |   |   SECURITY.md
+|   |   |   
+|   |   +---ISSUE_TEMPLATE
+|   |   |       1-bug-report.yml
+|   |   |       2-feature-request.yml
+|   |   |       config.yml
+|   |   |       
+|   |   \---workflows
+|   |           docker.yml
+|   |           label_issue.yml
+|   |           publish.yml
+|   |           tests.yml
+|   |           
+|   +---assets
+|   |   |   logo.png
+|   |   |   
+|   |   +---sponsors
+|   |   |       serpapi.svg
+|   |   |       warp.jpg
+|   |   |       
+|   |   +---thirdparty
+|   |   |       colab.svg
+|   |   |       discord.svg
+|   |   |       dsw.svg
+|   |   |       lab4ai.svg
+|   |   |       online.svg
+|   |   |       
+|   |   \---wechat
+|   |           lab4ai.jpg
+|   |           main.jpg
+|   |           npu.jpg
+|   |           online.jpg
+|   |           
+|   +---data
+|   |   |   alpaca_en_demo.json
+|   |   |   alpaca_zh_demo.json
+|   |   |   c4_demo.jsonl
+|   |   |   convert.py
+|   |   |   dataset_info.json
+|   |   |   dpo_en_demo.json
+|   |   |   dpo_zh_demo.json
+|   |   |   glaive_toolcall_en_demo.json
+|   |   |   glaive_toolcall_zh_demo.json
+|   |   |   identity.json
+|   |   |   kto_en_demo.json
+|   |   |   mllm_audio_demo.json
+|   |   |   mllm_demo.json
+|   |   |   mllm_video_audio_demo.json
+|   |   |   mllm_video_demo.json
+|   |   |   README.md
+|   |   |   README_zh.md
+|   |   |   wiki_demo.txt
+|   |   |   
+|   |   +---belle_multiturn
+|   |   |       belle_multiturn.py
+|   |   |       
+|   |   +---hh_rlhf_en
+|   |   |       hh_rlhf_en.py
+|   |   |       
+|   |   +---mllm_demo_data
+|   |   |       1.jpg
+|   |   |       1.mp3
+|   |   |       1.mp4
+|   |   |       2.avi
+|   |   |       2.jpg
+|   |   |       2.wav
+|   |   |       3.flac
+|   |   |       3.jpg
+|   |   |       3.mp4
+|   |   |       4.mp3
+|   |   |       4.mp4
+|   |   |       
+|   |   \---ultra_chat
+|   |           ultra_chat.py
+|   |           
+|   +---docker
+|   |   +---docker-cuda
+|   |   |       docker-compose.yml
+|   |   |       Dockerfile
+|   |   |       Dockerfile.base
+|   |   |       README.md
+|   |   |       
+|   |   +---docker-npu
+|   |   |       docker-compose.yml
+|   |   |       Dockerfile
+|   |   |       
+|   |   \---docker-rocm
+|   |           docker-compose.yml
+|   |           Dockerfile
+|   |           
+|   +---examples
+|   |   |   README.md
+|   |   |   README_zh.md
+|   |   |   
+|   |   +---accelerate
+|   |   |       fsdp_config.yaml
+|   |   |       fsdp_config_offload.yaml
+|   |   |       
+|   |   +---deepspeed
+|   |   |       ds_z0_config.json
+|   |   |       ds_z2_config.json
+|   |   |       ds_z2_offload_config.json
+|   |   |       ds_z3_config.json
+|   |   |       ds_z3_offload_config.json
+|   |   |       
+|   |   +---extras
+|   |   |   +---adam_mini
+|   |   |   |       qwen2_full_sft.yaml
+|   |   |   |       
+|   |   |   +---apollo
+|   |   |   |       llama3_full_sft.yaml
+|   |   |   |       
+|   |   |   +---badam
+|   |   |   |       llama3_full_sft.yaml
+|   |   |   |       
+|   |   |   +---dft
+|   |   |   |       qwen2_full_sft.yaml
+|   |   |   |       
+|   |   |   +---fsdp_qlora
+|   |   |   |       llama3_lora_sft.yaml
+|   |   |   |       train.sh
+|   |   |   |       
+|   |   |   +---galore
+|   |   |   |       llama3_full_sft.yaml
+|   |   |   |       
+|   |   |   +---llama_pro
+|   |   |   |       expand.sh
+|   |   |   |       llama3_freeze_sft.yaml
+|   |   |   |       
+|   |   |   +---loraplus
+|   |   |   |       llama3_lora_sft.yaml
+|   |   |   |       
+|   |   |   +---mod
+|   |   |   |       llama3_full_sft.yaml
+|   |   |   |       
+|   |   |   +---muon
+|   |   |   |       qwen2_full_sft.yaml
+|   |   |   |       
+|   |   |   +---nlg_eval
+|   |   |   |       llama3_lora_predict.yaml
+|   |   |   |       
+|   |   |   +---oft
+|   |   |   |       llama3_oft_sft.yaml
+|   |   |   |       qwen2_5vl_oft_sft.yaml
+|   |   |   |       
+|   |   |   +---pissa
+|   |   |   |       init.sh
+|   |   |   |       llama3_lora_sft.yaml
+|   |   |   |       
+|   |   |   \---qoft
+|   |   |           llama3_oft_sft_awq.yaml
+|   |   |           llama3_oft_sft_bnb_npu.yaml
+|   |   |           llama3_oft_sft_gptq.yaml
+|   |   |           
+|   |   +---inference
+|   |   |       llama3.yaml
+|   |   |       llama3_full_sft.yaml
+|   |   |       llama3_lora_sft.yaml
+|   |   |       qwen2_5vl.yaml
+|   |   |       
+|   |   +---merge_lora
+|   |   |       llama3_full_sft.yaml
+|   |   |       llama3_gptq.yaml
+|   |   |       llama3_lora_sft.yaml
+|   |   |       qwen2_5vl_lora_sft.yaml
+|   |   |       
+|   |   +---train_full
+|   |   |       llama3_full_sft.yaml
+|   |   |       qwen2.5_7b_ratio_auto_output_2468.yaml
+|   |   |       qwen2.7_7b_0.2_1.0_auto_pure.yaml
+|   |   |       qwen2.7_7b_0.2_1.0_special_token.yaml
+|   |   |       qwen2.7_7b_0.2_1.0_special_token_mixture.yaml
+|   |   |       qwen2_5vl_full_sft.yaml
+|   |   |       qwen3_1.7b_0.2_1.0_special_token_mixture.yaml
+|   |   |       qwen3_1.7b_0.2_1.0_special_token_mixture_58k_cleaned_data.yaml
+|   |   |       qwen3_1.7b_0.2_1.0_special_token_mixture_repetition.yaml
+|   |   |       qwen3_1.7b_0.2_1.0_special_token_mixture_repetition_data_cleaned.yaml
+|   |   |       qwen3_1.7b_0.2_1.0_thinkless.yaml
+|   |   |       train.sh
+|   |   |       
+|   |   +---train_lora
+|   |   |       gpt_lora_sft.yaml
+|   |   |       llama3_lora_dpo.yaml
+|   |   |       llama3_lora_eval.yaml
+|   |   |       llama3_lora_kto.yaml
+|   |   |       llama3_lora_ppo.yaml
+|   |   |       llama3_lora_pretrain.yaml
+|   |   |       llama3_lora_reward.yaml
+|   |   |       llama3_lora_sft.sh
+|   |   |       llama3_lora_sft.yaml
+|   |   |       llama3_lora_sft_ds3.yaml
+|   |   |       llama3_lora_sft_ray.yaml
+|   |   |       llama3_preprocess.yaml
+|   |   |       llama4_lora_sft_ds3.yaml
+|   |   |       qwen2.5_7b_history_longformer.yaml
+|   |   |       qwen2.5_7b_numeric_0.5.yaml
+|   |   |       qwen2.5_7b_numeric_0.5_0.7_0.9_full.yaml
+|   |   |       qwen2.5_7b_numeric_0.5_0.7_1.0.yaml
+|   |   |       qwen2.5_7b_numeric_0.5_and_1.0.yaml
+|   |   |       qwen2.5_7b_ratio_auto_2468_lm_head.yaml
+|   |   |       qwen2.5_7b_ratio_auto_output_2468.yaml
+|   |   |       qwen2.5_7b_special_token.yaml
+|   |   |       qwen2_5vl_lora_dpo.yaml
+|   |   |       qwen2_5vl_lora_sft.yaml
+|   |   |       
+|   |   \---train_qlora
+|   |           llama3_lora_sft_aqlm.yaml
+|   |           llama3_lora_sft_awq.yaml
+|   |           llama3_lora_sft_bnb_npu.yaml
+|   |           llama3_lora_sft_gptq.yaml
+|   |           llama3_lora_sft_otfq.yaml
+|   |           
+|   +---scripts
+|   |   |   eval_bleu_rouge.py
+|   |   |   llama_pro.py
+|   |   |   loftq_init.py
+|   |   |   pissa_init.py
+|   |   |   qwen_omni_merge.py
+|   |   |   vllm_infer.py
+|   |   |   
+|   |   +---api_example
+|   |   |       test_image.py
+|   |   |       test_toolcall.py
+|   |   |       
+|   |   +---convert_ckpt
+|   |   |       llamafy_baichuan2.py
+|   |   |       llamafy_qwen.py
+|   |   |       tiny_llama4.py
+|   |   |       
+|   |   \---stat_utils
+|   |           cal_flops.py
+|   |           cal_lr.py
+|   |           cal_mfu.py
+|   |           cal_ppl.py
+|   |           length_cdf.py
+|   |           
+|   +---src
+|   |   |   api.py
+|   |   |   train.py
+|   |   |   webui.py
+|   |   |   
+|   |   +---llamafactory
+|   |   |   |   cli.py
+|   |   |   |   launcher.py
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   +---api
+|   |   |   |   |   app.py
+|   |   |   |   |   chat.py
+|   |   |   |   |   common.py
+|   |   |   |   |   protocol.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   \---__pycache__
+|   |   |   |           app.cpython-310.pyc
+|   |   |   |           chat.cpython-310.pyc
+|   |   |   |           common.cpython-310.pyc
+|   |   |   |           protocol.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   +---chat
+|   |   |   |   |   base_engine.py
+|   |   |   |   |   chat_model.py
+|   |   |   |   |   hf_engine.py
+|   |   |   |   |   sglang_engine.py
+|   |   |   |   |   vllm_engine.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   \---__pycache__
+|   |   |   |           base_engine.cpython-310.pyc
+|   |   |   |           chat_model.cpython-310.pyc
+|   |   |   |           hf_engine.cpython-310.pyc
+|   |   |   |           sglang_engine.cpython-310.pyc
+|   |   |   |           vllm_engine.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   +---data
+|   |   |   |   |   collator.py
+|   |   |   |   |   converter.py
+|   |   |   |   |   data_utils.py
+|   |   |   |   |   formatter.py
+|   |   |   |   |   loader.py
+|   |   |   |   |   mm_plugin.py
+|   |   |   |   |   parser.py
+|   |   |   |   |   template.py
+|   |   |   |   |   tool_utils.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   +---processor
+|   |   |   |   |   |   feedback.py
+|   |   |   |   |   |   pairwise.py
+|   |   |   |   |   |   pretrain.py
+|   |   |   |   |   |   processor_utils.py
+|   |   |   |   |   |   supervised.py
+|   |   |   |   |   |   unsupervised.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           feedback.cpython-310.pyc
+|   |   |   |   |           pairwise.cpython-310.pyc
+|   |   |   |   |           pretrain.cpython-310.pyc
+|   |   |   |   |           processor_utils.cpython-310.pyc
+|   |   |   |   |           supervised.cpython-310.pyc
+|   |   |   |   |           unsupervised.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   \---__pycache__
+|   |   |   |           collator.cpython-310.pyc
+|   |   |   |           converter.cpython-310.pyc
+|   |   |   |           data_utils.cpython-310.pyc
+|   |   |   |           formatter.cpython-310.pyc
+|   |   |   |           loader.cpython-310.pyc
+|   |   |   |           mm_plugin.cpython-310.pyc
+|   |   |   |           parser.cpython-310.pyc
+|   |   |   |           template.cpython-310.pyc
+|   |   |   |           tool_utils.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   +---eval
+|   |   |   |   |   evaluator.py
+|   |   |   |   |   template.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   \---__pycache__
+|   |   |   |           evaluator.cpython-310.pyc
+|   |   |   |           template.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   +---extras
+|   |   |   |   |   constants.py
+|   |   |   |   |   env.py
+|   |   |   |   |   logging.py
+|   |   |   |   |   misc.py
+|   |   |   |   |   packages.py
+|   |   |   |   |   ploting.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   \---__pycache__
+|   |   |   |           constants.cpython-310.pyc
+|   |   |   |           env.cpython-310.pyc
+|   |   |   |           logging.cpython-310.pyc
+|   |   |   |           misc.cpython-310.pyc
+|   |   |   |           packages.cpython-310.pyc
+|   |   |   |           ploting.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   +---hparams
+|   |   |   |   |   data_args.py
+|   |   |   |   |   evaluation_args.py
+|   |   |   |   |   finetuning_args.py
+|   |   |   |   |   generating_args.py
+|   |   |   |   |   model_args.py
+|   |   |   |   |   parser.py
+|   |   |   |   |   training_args.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   \---__pycache__
+|   |   |   |           data_args.cpython-310.pyc
+|   |   |   |           evaluation_args.cpython-310.pyc
+|   |   |   |           finetuning_args.cpython-310.pyc
+|   |   |   |           generating_args.cpython-310.pyc
+|   |   |   |           model_args.cpython-310.pyc
+|   |   |   |           parser.cpython-310.pyc
+|   |   |   |           training_args.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   +---model
+|   |   |   |   |   adapter.py
+|   |   |   |   |   loader.py
+|   |   |   |   |   patcher.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   +---model_utils
+|   |   |   |   |   |   attention.py
+|   |   |   |   |   |   checkpointing.py
+|   |   |   |   |   |   embedding.py
+|   |   |   |   |   |   kv_cache.py
+|   |   |   |   |   |   liger_kernel.py
+|   |   |   |   |   |   longlora.py
+|   |   |   |   |   |   misc.py
+|   |   |   |   |   |   mod.py
+|   |   |   |   |   |   moe.py
+|   |   |   |   |   |   packing.py
+|   |   |   |   |   |   quantization.py
+|   |   |   |   |   |   rope.py
+|   |   |   |   |   |   unsloth.py
+|   |   |   |   |   |   valuehead.py
+|   |   |   |   |   |   visual.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           attention.cpython-310.pyc
+|   |   |   |   |           checkpointing.cpython-310.pyc
+|   |   |   |   |           embedding.cpython-310.pyc
+|   |   |   |   |           kv_cache.cpython-310.pyc
+|   |   |   |   |           liger_kernel.cpython-310.pyc
+|   |   |   |   |           longlora.cpython-310.pyc
+|   |   |   |   |           misc.cpython-310.pyc
+|   |   |   |   |           mod.cpython-310.pyc
+|   |   |   |   |           moe.cpython-310.pyc
+|   |   |   |   |           packing.cpython-310.pyc
+|   |   |   |   |           quantization.cpython-310.pyc
+|   |   |   |   |           rope.cpython-310.pyc
+|   |   |   |   |           unsloth.cpython-310.pyc
+|   |   |   |   |           valuehead.cpython-310.pyc
+|   |   |   |   |           visual.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   \---__pycache__
+|   |   |   |           adapter.cpython-310.pyc
+|   |   |   |           loader.cpython-310.pyc
+|   |   |   |           patcher.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   +---third_party
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   \---muon
+|   |   |   |           muon.py
+|   |   |   |           __init__.py
+|   |   |   |           
+|   |   |   +---train
+|   |   |   |   |   callbacks.py
+|   |   |   |   |   test_utils.py
+|   |   |   |   |   trainer_utils.py
+|   |   |   |   |   tuner.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   +---dpo
+|   |   |   |   |   |   trainer.py
+|   |   |   |   |   |   workflow.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           trainer.cpython-310.pyc
+|   |   |   |   |           workflow.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   +---kto
+|   |   |   |   |   |   trainer.py
+|   |   |   |   |   |   workflow.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           trainer.cpython-310.pyc
+|   |   |   |   |           workflow.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   +---ppo
+|   |   |   |   |   |   ppo_utils.py
+|   |   |   |   |   |   trainer.py
+|   |   |   |   |   |   workflow.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           ppo_utils.cpython-310.pyc
+|   |   |   |   |           trainer.cpython-310.pyc
+|   |   |   |   |           workflow.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   +---pt
+|   |   |   |   |   |   trainer.py
+|   |   |   |   |   |   workflow.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           trainer.cpython-310.pyc
+|   |   |   |   |           workflow.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   +---rm
+|   |   |   |   |   |   metric.py
+|   |   |   |   |   |   trainer.py
+|   |   |   |   |   |   workflow.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           metric.cpython-310.pyc
+|   |   |   |   |           trainer.cpython-310.pyc
+|   |   |   |   |           workflow.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   +---sft
+|   |   |   |   |   |   metric.py
+|   |   |   |   |   |   trainer.py
+|   |   |   |   |   |   workflow.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           metric.cpython-310.pyc
+|   |   |   |   |           trainer.cpython-310.pyc
+|   |   |   |   |           workflow.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   \---__pycache__
+|   |   |   |           callbacks.cpython-310.pyc
+|   |   |   |           trainer_utils.cpython-310.pyc
+|   |   |   |           tuner.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   +---webui
+|   |   |   |   |   chatter.py
+|   |   |   |   |   common.py
+|   |   |   |   |   control.py
+|   |   |   |   |   css.py
+|   |   |   |   |   engine.py
+|   |   |   |   |   interface.py
+|   |   |   |   |   locales.py
+|   |   |   |   |   manager.py
+|   |   |   |   |   runner.py
+|   |   |   |   |   __init__.py
+|   |   |   |   |   
+|   |   |   |   +---components
+|   |   |   |   |   |   chatbot.py
+|   |   |   |   |   |   data.py
+|   |   |   |   |   |   eval.py
+|   |   |   |   |   |   export.py
+|   |   |   |   |   |   footer.py
+|   |   |   |   |   |   infer.py
+|   |   |   |   |   |   top.py
+|   |   |   |   |   |   train.py
+|   |   |   |   |   |   __init__.py
+|   |   |   |   |   |   
+|   |   |   |   |   \---__pycache__
+|   |   |   |   |           chatbot.cpython-310.pyc
+|   |   |   |   |           data.cpython-310.pyc
+|   |   |   |   |           eval.cpython-310.pyc
+|   |   |   |   |           export.cpython-310.pyc
+|   |   |   |   |           footer.cpython-310.pyc
+|   |   |   |   |           infer.cpython-310.pyc
+|   |   |   |   |           top.cpython-310.pyc
+|   |   |   |   |           train.cpython-310.pyc
+|   |   |   |   |           __init__.cpython-310.pyc
+|   |   |   |   |           
+|   |   |   |   \---__pycache__
+|   |   |   |           chatter.cpython-310.pyc
+|   |   |   |           common.cpython-310.pyc
+|   |   |   |           control.cpython-310.pyc
+|   |   |   |           css.cpython-310.pyc
+|   |   |   |           engine.cpython-310.pyc
+|   |   |   |           interface.cpython-310.pyc
+|   |   |   |           locales.cpython-310.pyc
+|   |   |   |           manager.cpython-310.pyc
+|   |   |   |           runner.cpython-310.pyc
+|   |   |   |           __init__.cpython-310.pyc
+|   |   |   |           
+|   |   |   \---__pycache__
+|   |   |           cli.cpython-310.pyc
+|   |   |           launcher.cpython-310.pyc
+|   |   |           __init__.cpython-310.pyc
+|   |   |           
+|   |   \---llamafactory.egg-info
+|   |           dependency_links.txt
+|   |           entry_points.txt
+|   |           PKG-INFO
+|   |           requires.txt
+|   |           SOURCES.txt
+|   |           top_level.txt
+|   |           
+|   \---tests
+|       |   check_license.py
+|       |   version.txt
+|       |   
+|       +---data
+|       |   |   test_collator.py
+|       |   |   test_converter.py
+|       |   |   test_formatter.py
+|       |   |   test_loader.py
+|       |   |   test_mm_plugin.py
+|       |   |   test_template.py
+|       |   |   
+|       |   \---processor
+|       |           test_feedback.py
+|       |           test_pairwise.py
+|       |           test_processor_utils.py
+|       |           test_supervised.py
+|       |           test_unsupervised.py
+|       |           
+|       +---e2e
+|       |       test_chat.py
+|       |       test_sglang.py
+|       |       test_train.py
+|       |       
+|       +---eval
+|       |       test_eval_template.py
+|       |       
+|       +---model
+|       |   |   test_base.py
+|       |   |   test_freeze.py
+|       |   |   test_full.py
+|       |   |   test_lora.py
+|       |   |   test_pissa.py
+|       |   |   
+|       |   \---model_utils
+|       |           test_add_tokens.py
+|       |           test_attention.py
+|       |           test_checkpointing.py
+|       |           test_misc.py
+|       |           test_packing.py
+|       |           test_visual.py
+|       |           
+|       \---train
+|               test_sft_trainer.py
+|               
++---outputs
+|       README.md
+|       
+\---src
+    +---data
+    |   +---compressor
+    |   |   \---dataset_preparation
+    |   |       |   index_retrival.py
+    |   |       |   smart_chunker.py
+    |   |       |   
+    |   |       +---API
+    |   |       |   |   analyze_compression_ratio.py
+    |   |       |   |   api_gpt_4o.sh
+    |   |       |   |   gpt-4o.py
+    |   |       |   |   gpt4o_ranges_labeler.py
+    |   |       |   |   gpt_4o_format.py
+    |   |       |   |   visualize_compression_ratio.py
+    |   |       |   |   
+    |   |       |   +---api_result_completiness
+    |   |       |   |       check_empty_ranges.py
+    |   |       |   |       merge_results.py
+    |   |       |   |       retry.sh
+    |   |       |   |       retry_empty_chunks.py
+    |   |       |   |       
+    |   |       |   \---dataset_split
+    |   |       |           sampler.py
+    |   |       |           
+    |   |       +---camel
+    |   |       |   +---camel_chunk_cot_and_answer
+    |   |       |   |       audit_chunk_result.py
+    |   |       |   |       check_latex_completiness.py
+    |   |       |   |       check_token_distribution.py
+    |   |       |   |       chunk_camel_data.py
+    |   |       |   |       claude_chunk_camel_data.py
+    |   |       |   |       gpt_chunk_camel_data.py
+    |   |       |   |       math_tokenizer_no_space.py
+    |   |       |   |       test.py
+    |   |       |   |       
+    |   |       |   +---camel_chunk_only_cot
+    |   |       |   |       check_latex_completiness.py
+    |   |       |   |       check_token_distribution.py
+    |   |       |   |       convert_id_to_int.py
+    |   |       |   |       gpt_chunk_camel_data.py
+    |   |       |   |       process_think_tags.py
+    |   |       |   |       
+    |   |       |   \---camel_filter
+    |   |       |           filter_correct_answer.py
+    |   |       |           filter_token_num_and_format.py
+    |   |       |           final_dataset.py
+    |   |       |           merge_camel.py
+    |   |       |           test.py
+    |   |       |           
+    |   |       \---label_training_data
+    |   |           |   label_training_data.py
+    |   |           |   
+    |   |           \---visualization
+    |   |                   check_token_distribution.py
+    |   |                   pt2viewer_json.py
+    |   |                   
+    |   +---compressor_longformer
+    |   |   +---eval
+    |   |   |   |   compress_preview.md
+    |   |   |   |   preview.sh
+    |   |   |   |   preview_longformer.py
+    |   |   |   |   
+    |   |   |   \---compare_longformer_llmlingua2
+    |   |   |           compare.py
+    |   |   |           compare.sh
+    |   |   |           
+    |   |   +---train
+    |   |   |       train_longformer.py
+    |   |   |       train_longformer_v2.py
+    |   |   |       train_v1.sh
+    |   |   |       train_v2.sh
+    |   |   |       
+    |   |   \---validate
+    |   |       |   build_llamafactory_input.py
+    |   |       |   build_llamafactory_input_numeric.py
+    |   |       |   build_llamafactory_input_special_token.py
+    |   |       |   build_mixture.sh
+    |   |       |   build_mixture_llamafactory.py
+    |   |       |   infer.sh
+    |   |       |   inference_metamath.py
+    |   |       |   llamafactory_data.sh
+    |   |       |   llama_factory_0.5_0.7_0.9.py
+    |   |       |   test.py
+    |   |       |   tokenize_analysis.py
+    |   |       |   
+    |   |       +---datasets
+    |   |       |       sample_exlusive_1k.py
+    |   |       |       unique_metamath.py
+    |   |       |       
+    |   |       +---eval_utils
+    |   |       |       count_token.py
+    |   |       |       evaluate.py
+    |   |       |       evaluate_local.py
+    |   |       |       eval_local.sh
+    |   |       |       eval_lora.py
+    |   |       |       longformer_eval.sh
+    |   |       |       lora_eval.sh
+    |   |       |       tmp.py
+    |   |       |       
+    |   |       +---longformer_pipeline
+    |   |       |   |   build_llamafactory_input_numeric.py
+    |   |       |   |   filter_by_token_ratio.py
+    |   |       |   |   longformer_generate_data.sh
+    |   |       |   |   longformer_tokenizer_compression.py
+    |   |       |   |   vllm_with_adapter.sh
+    |   |       |   |   
+    |   |       |   \---llama3.2_3b_instruct
+    |   |       |       |   tokenize_analysis.py
+    |   |       |       |   
+    |   |       |       \---real_ratio
+    |   |       |           |   intersect_by_question.py
+    |   |       |           |   
+    |   |       |           \---intersection
+    |   |       |                   sample_by_id.py
+    |   |       |                   
+    |   |       \---Tokenskip_pipeline
+    |   |           |   build_llamafactory_input_numeric.py
+    |   |           |   llmlingua2_compression.py
+    |   |           |   llmlingua2_compression.sh
+    |   |           |   vllm_with_adapter.sh
+    |   |           |   
+    |   |           \---compression_llmlingua2
+    |   |                   build_llamafactory_input_numeric.py
+    |   |                   count_ratio.py
+    |   |                   sample_original_data.py
+    |   |                   
+    |   \---sft
+    |       +---longformer_pipeline
+    |       |   |   .txt
+    |       |   |   filter_by_token_ratio.py
+    |       |   |   intersect_by_question.py
+    |       |   |   longformer_compressor.py
+    |       |   |   longformer_generate_data.sh
+    |       |   |   
+    |       |   \---query_result
+    |       |       +---autofollow_sft_dataset
+    |       |       |       clear_consecutive_symbol_exclude_three_dot.py
+    |       |       |       merge_data_and_add_newline_after_think.py
+    |       |       |       patch_think_and_remove_begin_symbol.py
+    |       |       |       rewrite_autofollow.py
+    |       |       |       rewrite_follow_to_unified_json_v1.py
+    |       |       |       rewrite_follow_to_unified_json_v2.py
+    |       |       |       rewrite_follow_to_unified_json_v3.py
+    |       |       |       test.py
+    |       |       |       
+    |       |       \---Compression
+    |       |           |   clean_bad_samples.py
+    |       |           |   clean_bad_samples.sh
+    |       |           |   
+    |       |           +---RL_actual_ratio
+    |       |           |       filter_bad_sample.py
+    |       |           |       replace_think_with_compressed_cot.py
+    |       |           |       sample_recat_10k_auto_data.py
+    |       |           |       
+    |       |           \---SFT_actual_ratio_intesection
+    |       |                   filter_bad_sample.py
+    |       |                   replace_think_with_compressed_cot.py
+    |       |                   sample_jsonl_by_query.py
+    |       |                   
+    |       \---metamath_145k_query
+    |               bucket_stats.txt
+    |               check_think_tag.py
+    |               count_average_token.py
+    |               diff_by_query_against_rl_train_test.py
+    |               filter_correct_answer.py
+    |               filter_jsonl_by_query.py
+    |               select_sft_subset.py
+    |               
+    +---eval
+    |   \---qwen1p7b_eval
+    |       |   recheck_accuracy.py
+    |       |   special_token.sh
+    |       |   special_token_vllm.py
+    |       |   vllm.sh
+    |       |   vllm_eval.py
+    |       |   vllm_eval.sh
+    |       |   
+    |       \---mmlu-stem
+    |               eval_vllm.py
+    |               recheck_acc.py
+    |               vllm.sh
+    |               vllm_eval.sh
+    |               
+    \---training
+        \---qwen1p7b_rl
+            \---dataset
+                |   bucket_distribution_samples.py
+                |   filter_jsonl_by_query.py
+                |   merge_data.py
+                |   temp.py
+                |   vllm_inference.py
+                |   vllm_inference.sh
+                |   
+                +---rl_4k
+                |       convert_data_to_verl.py
+                |       
+                +---rl_dataset
+                |       basemodel_token_state.py
+                |       build_diff.py
+                |       build_diff_by_model_ratio.py
+                |       check_basemodel_accuracy.py
+                |       filter_by_ratio_window.py
+                |       
+                +---rl_model_ratio_v2
+                |       convert_data_to_verl.py
+                |       
+                \---rl_tiktoken_10k
+                        convert_data_to_verl.py
+                        validata_verl_mean_response_length.py
+                        validate.sh
+                        vllm.sh
+                        
