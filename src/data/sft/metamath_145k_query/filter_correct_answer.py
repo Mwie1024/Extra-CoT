@@ -8,11 +8,6 @@
 #       --response-key response \
 #       --output-key model_output
 #
-# 说明：
-# - gt 固定从 response 末尾格式解析：\nThe answer is: xxx.
-# - 预测只取 model_output 中 **最后一个** \boxed{...} 的内容进行对比
-# - output 仅写入答对的样本，且只保留 --keep-keys 指定的字段
-# - metadata 打印到控制台，可选写入文件（--meta-out）
 
 import argparse
 import json
