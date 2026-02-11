@@ -143,15 +143,9 @@ def build_basis_and_example(width: int, index_basis: str) -> Tuple[str, str]:
         raise ValueError("index_basis must be 'one_based_closed' or 'zero_based_halfopen'")
     return basis_note, example
 
-# =================== OpenAI/Nuwa 客户端 ===================
+# =================== OpenAI 客户端 ===================
 from openai import OpenAI
-NUWA_BASE_URL = os.getenv("NUWA_BASE_URL", "https://api.nuwaapi.com/v1")
-NUWA_API_KEY  = os.getenv("NUWA_API_KEY")
-if not NUWA_API_KEY:
-    raise RuntimeError("缺少 NUWA_API_KEY，请先 export NUWA_API_KEY=...")
-
-client = OpenAI(base_url=NUWA_BASE_URL, api_key=NUWA_API_KEY)
-
+# 需使用自己所需的 API
 # =================== I/O 与工具 ===================
 def tlog(msg: str):
     try: tqdm.write(msg)
