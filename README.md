@@ -17,12 +17,6 @@ This repository provides:
 - Evaluation scripts used in the experiments (vLLM-based)
 - SFT training configuration based on **LLaMA-Factory**
 
-This repository **does not include**:
-
-- RL training runners or reward optimization code
-- Pretrained model checkpoints
-- Full training or evaluation datasets
-
 ---
 
 ## Supervised fine-tuning (SFT)
