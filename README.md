@@ -67,7 +67,7 @@ CUDA_VISIBLE_DEVICES=5 python -m vllm.entrypoints.openai.api_server \
 Once the vLLM server is running, use the evaluation script:
 
 ```bash
-python vllm_eval.py \
+python src/eval/qwen1p7b_eval/vllm_eval.py \
   --input /path/to/test.jsonl \
   --dataset_format ansaug \
   --out ./eval_results \
