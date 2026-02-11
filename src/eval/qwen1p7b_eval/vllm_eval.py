@@ -1,45 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""
-eval_all_ratios_vllm.py
-
-一次性用 vLLM 跑多个 compression ratio（special 注入）：
-  ratios: 0.2, 0.4, 0.6, 0.8, 1.0, 2.0
-并把每个 ratio 的结果分别写到:
-  <output_dir>/<ratio>/prediction.json
-  <output_dir>/<ratio>/metrics.json
-
-规则与实现要点：
-- Chat 调用：使用 OpenAI 兼容的 /v1/chat/completions（参考第一份代码的调用细节），
-  构造 role-based messages（system+user），模型侧处理具体模板（Qwen/llama3 等）。
-- user_text = "Please reason step by step, and put your final answer within \\boxed{}.\n" + query [+ <COMP_XX> 或 <COMP_AUTO>]
-- gold：从测试数据 response 最后一处 "The answer is: ..." 抽取。
-- pred：从 model_output 的最后一个完整 \boxed{...} 抽取。
-- 匹配：math_verify(gold, pred)（分数/小数/百分/等号右侧等鲁棒比对）。
-- COT 长度：只统计 <think>...</think> 的 token 数，且不含 special tokens。
-- 输出时移除所有可识别的 special token 字符串（如 <|im_end|>、<|endoftext|> 等）。
-- 指标分三类统计：
-  ① 只统计有 pred 的样本；
-  ② 有 pred 且存在闭合 <think>...</think> 的样本；
-  ③ 全部样本。
-- 并发控制：用 --processes 控制异步并发数量（取代 --concurrency）。
-
-依赖：
-  pip install openai>=1.30.0 transformers tqdm
-（vLLM 需以 OpenAI 兼容服务形式运行，比如 base_url=http://localhost:8000/v1）
-
-用法示例：
-  python eval_all_ratios_vllm.py \
-    --input_path data.jsonl --dataset_format ansaug \
-    --output_dir out \
-    --vllm_base_url http://localhost:8000/v1 --vllm_api_key EMPTY \
-    --vllm_model qwen2.5-7b-instruct \
-    --tokenizer_path /path/to/qwen2.5-7b-instruct \
-    --model_type qwen \
-    --processes 32 --max_new_tokens 512 --len_ctrl none
-"""
-
 import os, re, json, time, argparse, random, asyncio
 from typing import List, Dict, Any, Optional
 
