@@ -1,32 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-merge_runs.py — 合并两个推理结果目录（各含 r020/040/060/080/100.best.jsonl），去重并处理交集。
 
-✅ 设计原则：同一题目（同一 id）只能来自其中一个目录，避免把 A 目录的 r100 当分母、B 目录的 r0.4 当分子。
-
-使用示例：
-  python merge_runs.py \
-    --a /path/to/dir_50k \
-    --b /path/to/dir_60k \
-    --out /path/to/merged_dir \
-    --policy best-actual    # 或 coverage / prefer-a / prefer-b
-
-输出：
-  merged_dir/r020.best.jsonl ... r100.best.jsonl  # 合并后的去重文件
-  merged_dir/merge_log.json                       # 合并摘要统计（JSON）
-
-策略说明（处理 A/B 目录交集 id 时如何选）：
-- prefer-a     : 交集全选目录 A
-- prefer-b     : 交集全选目录 B（默认）
-- coverage     : 看哪个目录此 id 的 r 档更多（覆盖度更高）就选谁；平手选 B
-- best-actual  : 分别在 A/B 内计算该 id 的“最小实际压缩比 actual_min”，选 actual_min 更小的；
-                 若相等则比较通过次数，再比较覆盖度，仍相等则选 B
-
-注意：
-- 若选定的目录里该 id 缺 r100，则该 id 被跳过（实际压缩比需要 r100 作为分母）。
-- 如果数据没有稳定的 "id"/"example_id"/"uid" 字段，将回退用规范化的题面文本做 MD5，对齐多数场景足够稳。
-"""
 
 import json, os, re, argparse, sys, hashlib
 from typing import Dict, List, Optional, Tuple
