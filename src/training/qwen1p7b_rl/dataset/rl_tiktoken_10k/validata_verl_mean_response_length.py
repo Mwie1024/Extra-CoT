@@ -1,23 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-vllm_chat_eval_jsonl.py
 
-- 从 parquet 读入样本，生成 chat messages（按 <COMP_xx>/<COMP_AUTO> 规范）
-- 调用 vLLM 的 /v1/chat/completions（开启 logprobs）
-- 统计并导出 JSONL：每行一条生成记录（含首 token、长度、片段等）
-- 打印长度分布与 <COMP> 首 token 命中率
-
-用法示例：
-python vllm_chat_eval_jsonl.py \
-  --data /path/to/train.parquet \
-  --tokenizer /path/to/tokenizer \
-  --model qwen3-1.7b \
-  --num_prompts 128 --n 4 \
-  --temperature 0.7 --top_p 0.9 \
-  --stop "<|im_end|>" "</s>" \
-  --seed 43 \
-  --out_jsonl vllm_eval_outputs.jsonl
-"""
 import os
 import re
 import json
