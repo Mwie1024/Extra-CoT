@@ -1,11 +1,11 @@
 python validata_verl_mean_response_length.py \
-  --data /data/tyt/workspace/tyt/CoT/CoT-Language-master/Qwen3-1.7B/RL/dataset/rl_tiktoken_10k/verl_data/train.parquet \
+  --data data_path \
   --prompt_key prompt \
   --num_prompts 128 \
   --n 4 \
   --base_url http://localhost:8000 \
-  --model /data/tyt/workspace/tyt/CoT/LLaMA-Factory-main/saves/qwen3_1.7b_full_ratio_72k_cleaned \
-  --tokenizer /data/tyt/workspace/tyt/CoT/LLaMA-Factory-main/saves/qwen3_1.7b_full_ratio_72k_cleaned \
+  --model model_path \
+  --tokenizer model_path \
   --max_user_tokens 1024 \
   --max_tokens 4096 \
   --temperature 0.7 \
