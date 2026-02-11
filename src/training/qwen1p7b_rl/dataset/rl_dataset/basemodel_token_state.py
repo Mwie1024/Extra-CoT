@@ -1,19 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-jsonl_token_stats.py — 统计 JSONL 文件中某个字段（默认: model_output）的 token 数等统计信息
-
-用法示例:
-    python jsonl_token_stats.py path/to/file.jsonl
-    # 指定字段（支持点路径）：
-    python jsonl_token_stats.py data.jsonl --field model_output
-    python jsonl_token_stats.py data.jsonl --field choices.0.message.content
-    # 指定 tokenizer：
-    python jsonl_token_stats.py data.jsonl --model gpt-4o-mini
-    python jsonl_token_stats.py data.jsonl --encoding cl100k_base
-    # 更多选项：
-    python jsonl_token_stats.py data.jsonl --percentiles 5,50,95 --topk 10 --preview 120
-"""
 
 import argparse, gzip, math, statistics, sys
 try:
