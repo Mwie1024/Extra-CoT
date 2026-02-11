@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-基于 GPT-4o 的 CoT 压缩标注（返回索引区间 ranges；与 Nuwa/OpenAI 兼容）
+基于 GPT-4o 的 CoT 压缩标注（返回索引区间 ranges）
 
 输入（JSON 或 JSONL；list[object]）：
   - id (int)                     # 若缺，自动补 0..N-1
@@ -181,15 +181,9 @@ def build_basis_and_example(width: int, index_basis: str) -> Tuple[str, str]:
         raise ValueError("index_basis must be 'one_based_closed' or 'zero_based_halfopen'")
     return basis_note, example
 
-# =================== OpenAI/Nuwa 客户端 ===================
+# =================== OpenAI ===================
 from openai import OpenAI
-NUWA_BASE_URL = os.getenv("NUWA_BASE_URL", "https://api.nuwaapi.com/v1")
-NUWA_API_KEY  = os.getenv("NUWA_API_KEY")
-if not NUWA_API_KEY:
-    raise RuntimeError("缺少 NUWA_API_KEY，请先 export NUWA_API_KEY=...")
-
-client = OpenAI(base_url=NUWA_BASE_URL, api_key=NUWA_API_KEY)
-
+# 需使用自己所需的 API
 # =================== I/O 与工具 ===================
 def tlog(msg: str):
     try: tqdm.write(msg)
