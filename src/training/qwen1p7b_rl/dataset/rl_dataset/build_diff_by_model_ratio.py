@@ -1,22 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Re-sample an RL dataset by target-first strict monotonicity, then actual-ratio filtering
-(no bucketing by actual labels beyond windows), with downward adjacent up-fill (up to 2 levels),
-and also export N items that fail all ratios (gt_ratio=1.0).
 
-Outputs:
-  <out_dir>/rl25k.jsonl      : sampled tuples (per-level quotas + 2-hop adjacent up-fill)
-  <out_dir>/allfail500.jsonl : all-fail tuples (gt_ratio=1.0)
-  <out_dir>/meta.json        : stats
-
-Example:
-  python rl_sampler_by_target_then_actual.py \
-    --dirs dataA dataB \
-    --out_dir out/ \
-    --quotas "20:6500,40:9000,60:5000,80:3000,100:1500" \
-    --all_fail_k 500
-"""
 
 import argparse, json, os, re, sys, random, hashlib
 from collections import Counter
