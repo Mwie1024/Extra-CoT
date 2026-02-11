@@ -1,29 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Re-bucket by ACTUAL compression ratio (measured strictly on <think>...</think>),
-assign difficulty by STRICT target-first monotonicity, and sample a 25k RL set.
 
-Inputs (read-only): one or more directories that each contain:
-  r020.best.jsonl, r040.best.jsonl, r060.best.jsonl, r080.best.jsonl, r100.best.jsonl
-
-We DO NOT rewrite any rxxx files. We only emit:
-  <out_dir>/rl25k.jsonl   # sampled tuples
-  <out_dir>/meta.json     # stats, quotas, shortages, fill sources
-
-Default bin ranges (actual_ratio on <think> tokens):
-  20: 0.10-0.30, 40: 0.30-0.50, 60: 0.50-0.70, 80: 0.70-0.90, 100: 0.90-9.99
-
-Default quotas (sum=25,000):
-  20:6500, 40:9000, 60:5000, 80:3000, 100:1500
-
-Notes:
-  - We count tokens using tiktoken cl100k_base; fallback to len(text)//4 if unavailable.
-  - Correctness: gold 优先取条目中的 "answer"，否则以 "response" 最后一处
-    "The answer is: ..."；pred 取 "model_output" 中最后一处 \boxed{...}（带配对括号）。
-  - 单题最多出现一次：按“所选目标档 r 的实际压缩比”决定分桶；若 non-mono，也仍按其
-    最小 actual 的目标档入桶。
-"""
 
 import argparse, json, os, re, sys, random, hashlib
 from collections import defaultdict
