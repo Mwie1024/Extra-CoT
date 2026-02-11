@@ -5,7 +5,7 @@ import tiktoken
 import re
 
 # 指定文件路径
-jsonl_path = "/data/tyt/workspace/tyt/CoT/CoT-Language-master/Qwen3-1.7B/dataset/metamath_145k_inference_result/selected_sft_seed.jsonl"
+jsonl_path = "input.json"
 
 
 # 选择模型对应的分词器
