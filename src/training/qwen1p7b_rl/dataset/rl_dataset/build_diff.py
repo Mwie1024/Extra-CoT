@@ -1,29 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Re-bucket by *actual* compression ratio in-memory and sample a 25k RL dataset.
-
-Inputs (read-only): one or more directories that each contain:
-  r020.best.jsonl, r040.best.jsonl, r060.best.jsonl, r080.best.jsonl, r100.best.jsonl
-
-We DO NOT rewrite any rxxx files. We only emit:
-  <out_dir>/rl25k.jsonl   # sampled RL tuples
-  <out_dir>/meta.json     # stats, quotas, shortages, fill sources
-
-Key rules:
-  1) Bucket by ACTUAL ratio (computed on <think>...</think> tokens vs. r100 baseline).
-  2) Difficulty is determined by STRICT monotonic target-first: the *smallest* target ratio r
-     such that all larger ratios also pass. If none, it's non-monotonic.
-  3) One problem appears at most once: we assign the problem to the actual-bin of the *chosen* r.
-  4) Prefer monotonic samples. If a bin lacks supply, optionally allow non-monotonic fill in that bin
-     (default允许: 100 档可用 non-mono 填补；其他档默认禁用，可通过 CLI 开启)。
-  5) Per-bin quotas: default "20:6500,40:9000,60:5000,80:3000,100:1500" (total 25k).
-     If某档供给不足：自动在「保持本档」前提下按剩余档位供给比例重分配，尽量仍凑满 25k。
-
-Tokenization: tiktoken cl100k_base (fallback to len(text)//4 if missing).
-Correctness: gold 取 response 最后一处 "The answer is: ..."; pred 取 model_output 中最后一个 \boxed{...}；
-            宽松等价：数值近似（含分数转小数）、极简字符串归一。
-"""
 
 import argparse, json, os, re, sys, random, math, hashlib
 from collections import defaultdict, Counter
