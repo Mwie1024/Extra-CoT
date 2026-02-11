@@ -21,10 +21,6 @@
 
 依赖：
   pip install openai tqdm
-
-环境变量：
-  NUWA_BASE_URL（默认 https://api.nuwaapi.com/v1）
-  NUWA_API_KEY  （必填）
 """
 
 import os
@@ -181,14 +177,9 @@ def build_index_view_for_chunk(question: str, chunk_text: str) -> Dict[str, Any]
         "user_text": user_text
     }
 
-# =================== OpenAI/Nuwa 客户端 ===================
+# =================== OpenAI 客户端 ===================
 from openai import OpenAI
-NUWA_BASE_URL = os.getenv("NUWA_BASE_URL", "https://api.nuwaapi.com/v1")
-NUWA_API_KEY  = os.getenv("NUWA_API_KEY", "sk-FppvgoIWVmoq7esmYc4wfLrSqcluj4tclwRpzhVlgMhGLkDJ")
-if not NUWA_API_KEY:
-    raise RuntimeError("缺少 NUWA_API_KEY，请先 export NUWA_API_KEY=...")
-
-client = OpenAI(base_url=NUWA_BASE_URL, api_key=NUWA_API_KEY)
+# 需使用自己所需的 API
 
 # =================== I/O 与工具 ===================
 def ensure_output_dir(path: str):
