@@ -44,15 +44,39 @@ The RL training loop itself is **intentionally not released** in this research c
 
 ------
 
-## Evaluation
+## Inference & Evaluation
 
-Evaluation scripts are provided for reproducing the reported results, including:
+Evaluation is performed via **vLLM** in OpenAI-compatible server mode.  
+The evaluation script queries the model through `/v1/chat/completions` and supports multiple compression ratios.
 
-- vLLM-based inference and evaluation
-- special-token evaluation settings
-- out-of-distribution evaluation utilities (e.g., MMLU-STEM)
+### 1. Start vLLM server
 
-------
+First, launch the model using vLLM:
+
+```bash
+CUDA_VISIBLE_DEVICES=5 python -m vllm.entrypoints.openai.api_server \
+  --model /path/to/your/model_checkpoint \
+  --tensor-parallel-size 1 \
+  --host 0.0.0.0 \
+  --port 8003
+````
+---
+
+### 2. Run evaluation
+
+Once the vLLM server is running, use the evaluation script:
+
+```bash
+python vllm_eval.py \
+  --input /path/to/test.jsonl \
+  --dataset_format ansaug \
+  --out ./eval_results \
+  --vllm_base_url http://localhost:8003/v1 \
+  --vllm_model /path/to/your/model_checkpoint \
+  --tokenizer_path /path/to/your/model_checkpoint \
+  --max_new_tokens 4096
+```
+---
 
 ## Notes on external APIs
 
