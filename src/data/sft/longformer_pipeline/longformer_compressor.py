@@ -3,36 +3,6 @@
 
 """
 compress_with_longformer_tokenskip_style.py
-
-将已有推理结果（如 TokenSkip 里的 predictions.jsonl / formatted.jsonl）
-用【你训练好的 Longformer 压缩器】在多种压缩比下生成训练数据，
-输出字段与 LLMLingua2 管线保持一致（便于无缝替换）。
-
-本版本改进：
-- 为 Longformer 设置 global attention（question 段开启全局注意）。
-- 支持批量推理（--batch_size），显著提升吞吐。
-- 同一条样本一次前向，复用 logits 到多种 ratio，避免重复前向。
-- 后处理使用“区间并集”替代逐字符掩膜，减少 Python 端热点。
-- 可选 AMP 半精度（--amp {none,fp16,bf16}）。
-
-输出条目字段（每条样本）：
-{
-  "question": str,
-  "input": str or null,
-  "output": str,
-  "answer": str or null,
-  "model_answer": str or null,
-  "is_correct": bool or null,
-  "cot": str,
-  "compressed_cot": str,
-  "original_cot_tokens": int,      # COT区间内参与排序的token数（Longformer分词）
-  "compressed_cot_tokens": int,    # 被选择的token数（Top-k）
-  "compression_rate": float,       # = compressed_cot_tokens / original_cot_tokens
-  "original_cot_chars": int,       # COT原文字符数
-  "compressed_cot_chars": int,     # 压缩后字符数
-  "achieved_keep_ratio_token": float,
-  "achieved_keep_ratio_char": float
-}
 """
 
 import os, re, json, argparse, contextlib
