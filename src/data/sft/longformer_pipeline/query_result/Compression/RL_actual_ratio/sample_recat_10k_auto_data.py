@@ -4,13 +4,6 @@
 Sample 10k data from recat_rXXX.jsonl files according to desired ratio proportions,
 matching entries from A.jsonl by question text and adding the special_token field.
 
-Usage example:
-  python sample_recat_10k.py \
-    --a_path /data/tyt/workspace/tyt/CoT/CoT-Language-master/Qwen3-1.7B/longformer_pipeline/Compression/A.jsonl \
-    --recat_dir /data/tyt/workspace/tyt/CoT/CoT-Language-master/Qwen3-1.7B/longformer_pipeline/Compression/RL_actual_ratio \
-    --output /data/tyt/workspace/tyt/CoT/CoT-Language-master/Qwen3-1.7B/longformer_pipeline/Compression/RL_actual_ratio/recat_10k_sampled.jsonl \
-    --seed 42
-
 Notes:
 - Exact matching is done between A.jsonl["question_raw"] and recat_rXXX.jsonl["question"],
   after simple whitespace normalization. If no match, the item is skipped.
