@@ -1,22 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""
-eval_vllm_aligned_special_multi.py
-
-改动要点：
-- 要求输入数据每条记录必须自带唯一 id（不再生成 _stable_id_from_fields）。
-- 对每个压缩档位一次请求产生 n 个采样（--samples，默认 3）；
-- 本地根据规则挑选一个 best-of，仍输出 “一行/样本”的兼容格式；
-- 可选 (--save_all_samples) 将全部候选额外写到 *.raw.jsonl；
-- 新增 --top_k，并给出默认解码配置 temperature=0.7, top_p=0.95, top_k=50；
-- 继续支持并发、断点续跑、Qwen/Llama3 Prompt 对齐与 <COMP_xx> 注入。
-
-说明：
-- vLLM /v1/completions 的 "n" 字段用于一次取多个采样；保持可复现实验，可留 seed。
-- best-of 规则：correct(含 \\boxed 且等于 GT) > boxed-only > longest。
-"""
-
 import os
 import re
 import json
