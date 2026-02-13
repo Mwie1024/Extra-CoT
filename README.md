@@ -20,7 +20,7 @@ Yuntian Tang, Bohan Jia, Wenxuan Huang, Lianyue Zhang, Jiao Xie, Wenxi Li, Wei L
 
 This line chart highlights the key trade-off: **accuracy vs. compression** under different budgets. Lower ratios indicate stronger compression (fewer reasoning tokens).
 <p align="center">
-  <img src="assets/fig/line_graph.png" width="700" alt="Teaser Curve">
+  <img src="assets/fig/line_graph.png" width="500" alt="Teaser Curve">
 </p>
 
 ---
