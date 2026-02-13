@@ -1,7 +1,7 @@
 # Extra-CoT: Extreme-Ratio Chain-of-Thought Compression
 
 **Towards Efficient Large Language Reasoning Models via Extreme-Ratio Chain-of-Thought Compression**
-Yuntian Tang, Bohan Jia, Wenxuan Huang, Lianyue Zhang, Jiao Xie, Wenxi Li, Wei Li, Jie Hu, Xinghao Chen, Rongrong Ji, Shaohui Lin
+Yuntian Tang, Bohan Jia, Wenxuan Huang, Lianyue Zhang, Jiao Xie, Wenxi Li, Wei Li, Jie Hu, Xinghao Chen, Rongrong Ji, Shaohui Lin<br>
 [arXiv:2602.08324](https://arxiv.org/abs/2602.08324)
 
 ---
@@ -19,7 +19,9 @@ Yuntian Tang, Bohan Jia, Wenxuan Huang, Lianyue Zhang, Jiao Xie, Wenxi Li, Wei L
 > This repo contains code for **SFT + vLLM evaluation** and the **ratio-controlled inference interface**.
 
 This line chart highlights the key trade-off: **accuracy vs. compression** under different budgets. Lower ratios indicate stronger compression (fewer reasoning tokens).
-![Teaser Curve](assets/fig/line_graph.png)
+<p align="center">
+  <img src="assets/fig/line_graph.png" width="700" alt="Teaser Curve">
+</p>
 
 ---
 
