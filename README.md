@@ -12,7 +12,7 @@ Yuntian Tang, Bohan Jia, Wenxuan Huang, Lianyue Zhang, Jiao Xie, Wenxi Li, Wei L
 
 - **Stage 1 (Compressor):** a *formula-aware*, question-aligned CoT compressor that produces **high-fidelity** compressed rationales for supervision.
 - **Stage 2 (Mixed-ratio SFT):** trains a single model to follow **multiple compression ratios** with stable controllability (no “control collapse” at low ratios).
-- **Stage 3 (CHRPO):** a hierarchical RL algorithm that learns an adaptive policy (**`<COMP_POLICY>` / `<POLICY>` mode**) for ultra-low budgets.
+- **Stage 3 (CHRPO):** a hierarchical RL algorithm that learns an adaptive policy (**`<COMP_POLICY>` mode**) for ultra-low budgets.
 
 ![Extra-CoT Overview](assets/fig/overall.png)
 
