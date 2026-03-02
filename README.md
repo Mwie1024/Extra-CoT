@@ -1,7 +1,7 @@
 # Extra-CoT: Extreme-Ratio Chain-of-Thought Compression
 
 **Towards Efficient Large Language Reasoning Models via Extreme-Ratio Chain-of-Thought Compression**
-Yuntian Tang, Bohan Jia, Wenxuan Huang, Lianyue Zhang, Jiao Xie, Wenxi Li, Wei Li, Jie Hu, Xinghao Chen, Rongrong Ji, Shaohui Lin<br>
+Yuntian Tang, Bohan Jia, Wenxuan Huang, Lianyue Zhang, Jiao Xie, Wenxi Li, Rongrong Ji, Shaohui Lin<br>
 [arXiv:2602.08324](https://arxiv.org/abs/2602.08324)
 
 ---
