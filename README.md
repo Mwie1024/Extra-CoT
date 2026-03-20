@@ -77,7 +77,7 @@ The table reports the accuracy–compression trade-off on GSM8K, MATH-500, and A
 | **Extra-CoT (Ours)** | **0.2** | **303 / 80.2 (0.34)** | **481 / 47.8 (0.29)** | **782 / 17.5 (0.37)** |
 | Thinkless (DeGRPO) | – | 356 / 85.5 (0.41) | 888 / 63.6 (0.53) | 1369 / 50.0 (0.65) |
 | **Extra-CoT (CHRPO)** | **`<POLICY>`** | **210 / 85.8 (0.24)** | **452 / 64.8 (0.27)** | **675 / 50.0 (0.32)** |
-
+ 
 ---
 
 ### Latency (end-to-end)
