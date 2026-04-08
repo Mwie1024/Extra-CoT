@@ -3,7 +3,7 @@
 **Towards Efficient Large Language Reasoning Models via Extreme-Ratio Chain-of-Thought Compression**
 Yuntian Tang, Bohan Jia, Wenxuan Huang, Lianyue Zhang, Jiao Xie, Wenxi Li, Rongrong Ji, Shaohui Lin<br>
 [![arXiv](https://img.shields.io/badge/arXiv-2602.08324-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2602.08324)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Extra--CoT--1.7B-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/Mwie/Extra-CoT-1.7B)
+
 ---
 
 ## TL;DR
